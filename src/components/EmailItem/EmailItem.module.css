@@ -1,0 +1,63 @@
+.emailItemContainer{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border: solid 1px var(--border-color);
+    border-radius: 0.25rem;
+    margin: 1rem;
+    background-color: #fff;
+}
+
+.avatar{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.detailsContainer{
+    font-size: 0.9rem
+}
+
+.from{
+    color: var(--text-color);
+}
+
+.subject {
+    color: var(--text-color);
+    margin-top: 0.5rem;
+}
+
+.emailId, .subjectTitle{
+    font-weight: bold;
+    margin: 0 0.25rem;
+}
+
+.otherDetails{
+    color: var(--text-color);
+    margin-top: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem
+
+}
+
+.shortDescription{
+    color: var(--text-color);
+    margin-top: 0.8rem;
+}
+
+.favorite{
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+
+
