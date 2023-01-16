@@ -1,0 +1,13 @@
+:root{
+  --primary-color: #E54065;
+  --page-background-color: #F4F5F9;
+  --border-color: #CFD2DC;
+  --text-color: #636363;
+  --filter-background-color: #E1E4EA;
+  --read-background-color: #F2F2F2;
+}
+
+body{
+    background: var(--page-background-color);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
