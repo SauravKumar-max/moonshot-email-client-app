@@ -11,3 +11,8 @@ body{
     background: var(--page-background-color);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.App{
+  width: 92%;
+  margin: auto;
+}

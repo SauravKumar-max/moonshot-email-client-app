@@ -1,10 +1,20 @@
-.emailItemContainer{
+.readContainer{
     display: flex;
     gap: 1rem;
     padding: 1rem;
     border: solid 1px var(--border-color);
-    border-radius: 0.25rem;
-    margin: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    background-color: var(--read-background-color);
+}
+
+.unReadContainer{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border: solid 1px var(--border-color);
+    border-radius: 0.5rem;
+    margin: 1rem 0;
     background-color: #fff;
 }
 
@@ -27,6 +37,8 @@
 
 .from{
     color: var(--text-color);
+    display: flex;
+    align-items: center;
 }
 
 .subject {
@@ -37,6 +49,10 @@
 .emailId, .subjectTitle{
     font-weight: bold;
     margin: 0 0.25rem;
+}
+
+.name{
+    text-transform: capitalize;
 }
 
 .otherDetails{

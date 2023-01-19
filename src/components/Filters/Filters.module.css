@@ -1,0 +1,30 @@
+.container{
+    margin: 2rem 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filterBtns{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filterBtns button{
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    padding: 0.3rem 1.1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.filterBtns button:hover{
+    background: var(--filter-background-color);
+}
+
+.filterBtns .active {
+    background: var(--filter-background-color);
+}
