@@ -1,9 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  getFilterFromLocalStorage,
+  setFilterInLocalStorage,
+} from "../../helpers/filter";
 import { getEmailList } from "../../services/emailList";
 
 export const getEmails = createAsyncThunk("emails/fetch", async (pageNo) => {
   const data = await getEmailList(pageNo);
-  console.log({ data });
   return data;
 });
 
@@ -12,11 +15,47 @@ const initialState = {
   errorMessage: null,
   emailList: [],
   totalRecords: 0,
+  emailBody: null,
+  filterBy: "",
+  filteredList: [],
+  readIds: getFilterFromLocalStorage("read") ?? [],
+  markedFavouriteIds: getFilterFromLocalStorage("favourite") ?? [],
 };
 
 const emailSlice = createSlice({
   name: "emails",
   initialState,
+  reducers: {
+    filterByRead: (state) => {
+      const { emailList, readIds } = state;
+      state.filteredList = emailList.filter((item) =>
+        readIds.includes(item.id)
+      );
+    },
+
+    filterByUnread: (state) => {
+      const { emailList, readIds } = state;
+      state.filteredList = emailList.filter(
+        (item) => !readIds.includes(item.id)
+      );
+    },
+
+    filterByFavorites: (state) => {
+      const { emailList, markedFavouriteIds } = state;
+      state.filteredList = emailList.filter((item) =>
+        markedFavouriteIds.includes(item.id)
+      );
+    },
+
+    selectEmailBody: (state, action) => {
+      const { id } = action.payload;
+      state.readIds = state.readIds.includes(id)
+        ? state.readIds
+        : [...state.readIds, id];
+      state.emailBody = action.payload;
+      setFilterInLocalStorage("read", state.readIds);
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -31,6 +70,7 @@ const emailSlice = createSlice({
         state.status = "SUCCEEDED";
         state.errorMessage = null;
         state.emailList = list;
+        state.filteredList = list;
         state.totalRecords = total;
       })
       .addCase(getEmails.rejected, (state, action) => {
@@ -41,5 +81,12 @@ const emailSlice = createSlice({
       });
   },
 });
+
+export const {
+  filterByRead,
+  filterByUnread,
+  filterByFavorites,
+  selectEmailBody,
+} = emailSlice.actions;
 
 export default emailSlice.reducer;
