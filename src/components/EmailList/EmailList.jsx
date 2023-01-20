@@ -1,19 +1,23 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectEmailBody } from "../../features/emails/emailSlice";
+import { EmailBody } from "../EmailBody/EmailBody";
 import { EmailItem } from "../EmailItem/EmailItem";
 import { Skeleton } from "../Skeleton/Skeleton";
-import styles from "./EmailList.module.css";
+import "./EmailList.css";
 
 export function EmailList() {
-  const { status, filteredList } = useSelector((state) => state.emails);
+  const { status, filteredList, emailBody } = useSelector(
+    (state) => state.emails
+  );
   const dispatch = useDispatch();
 
   function openEmailBody(item) {
     dispatch(selectEmailBody(item));
   }
+
   return (
-    <div className={styles.container}>
+    <div className={"container"}>
       {status === "IDLE" || status === "LOADING" ? (
         <div>
           <Skeleton />
@@ -22,13 +26,20 @@ export function EmailList() {
           <Skeleton />
         </div>
       ) : (
-        <ul className={styles.list}>
-          {filteredList.map((item) => (
-            <li key={item.id} onClick={() => openEmailBody(item)}>
-              <EmailItem item={item} />
-            </li>
-          ))}
-        </ul>
+        <div className={emailBody ? "list-body-container" : ""}>
+          <ul className={emailBody ? "list-body" : "list"}>
+            {filteredList.map((item) => (
+              <li key={item.id} onClick={() => openEmailBody(item)}>
+                <EmailItem item={item} />
+              </li>
+            ))}
+          </ul>
+          {emailBody && (
+            <div className="email-body">
+              <EmailBody />
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
