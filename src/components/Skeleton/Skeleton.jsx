@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./Skeleton.module.css";
+import "./Skeleton.css";
 
 export function Skeleton() {
-  return <div className={styles.container}></div>;
+  return <div className={"skeleton-container"}></div>;
 }

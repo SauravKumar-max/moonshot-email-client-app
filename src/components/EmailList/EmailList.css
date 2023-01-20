@@ -1,0 +1,20 @@
+.list{
+    list-style: none;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.list-body-container{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.list-body{
+    width: 40%;
+    list-style: none;
+}
+
+.email-body{
+    width: 60%;
+}

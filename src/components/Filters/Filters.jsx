@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Filters.module.css";
+import "./Filters.css";
 import {
   filterByRead,
   filterByUnread,
@@ -20,14 +20,14 @@ export function Filters() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={"filter-container"}>
       <div>Filter By:</div>
-      <div className={styles.filterBtns}>
+      <div className={"filter-btns"}>
         {filtersList.map((item) => (
           <button
             key={item}
             type="button"
-            className={activeFilter === item ? styles.active : ""}
+            className={activeFilter === item ? "active" : ""}
             onClick={() => onFilterClick(item)}
           >
             {item}

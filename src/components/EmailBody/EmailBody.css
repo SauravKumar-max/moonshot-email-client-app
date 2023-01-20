@@ -1,0 +1,65 @@
+.body-container{
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border: solid 1px var(--border-color);
+    padding: 2rem 2.5rem 2rem 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    border-radius: 0.5rem;
+    /* position: sticky;
+    position: -webkit-sticky;
+    top: 1rem; */
+}
+
+.main{
+    width: 100%;
+}
+
+.heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.heading h4{
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.heading button{
+    outline: none;
+    font-size: 0.8rem;
+    padding: 0.3rem 1.1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.mark{
+    border: none;
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.unmark{
+    border: solid 1px var(--primary-color);
+    color: var(--primary-color);
+    background: #fff;
+}
+
+.date{
+    color: var(--text-color);
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.content{
+    margin-top: 1.5rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.content p{
+    margin-bottom: 1rem;
+}

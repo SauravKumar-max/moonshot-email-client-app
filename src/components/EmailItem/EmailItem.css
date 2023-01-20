@@ -1,20 +1,17 @@
-.readContainer{
+.item-container{
     display: flex;
     gap: 1rem;
     padding: 1rem;
     border: solid 1px var(--border-color);
     border-radius: 0.5rem;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+.read{
     background-color: var(--read-background-color);
 }
 
-.unReadContainer{
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
-    border: solid 1px var(--border-color);
-    border-radius: 0.5rem;
-    margin: 1rem 0;
+.unread{
     background-color: #fff;
 }
 
@@ -31,11 +28,11 @@
     font-size: 1.2rem;
 }
 
-.detailsContainer{
+.details{
     font-size: 0.9rem
 }
 
-.from{
+.email-from{
     color: var(--text-color);
     display: flex;
     align-items: center;
@@ -46,16 +43,16 @@
     margin-top: 0.5rem;
 }
 
-.emailId, .subjectTitle{
+.email-id, .subject-title {
     font-weight: bold;
     margin: 0 0.25rem;
 }
 
-.name{
+.name {
     text-transform: capitalize;
 }
 
-.otherDetails{
+.other-details{
     color: var(--text-color);
     margin-top: 0.8rem;
     display: flex;
@@ -64,7 +61,7 @@
 
 }
 
-.shortDescription{
+.short-description{
     color: var(--text-color);
     margin-top: 0.8rem;
 }
