@@ -55,6 +55,20 @@ const emailSlice = createSlice({
       state.emailBody = action.payload;
       setFilterInLocalStorage("read", state.readIds);
     },
+
+    addToFavourite: (state, action) => {
+      const id = action.payload;
+      state.markedFavouriteIds.push(id);
+      setFilterInLocalStorage("favourite", state.markedFavouriteIds);
+    },
+
+    removeFromFavourite: (state, action) => {
+      const id = action.payload;
+      state.markedFavouriteIds = state.markedFavouriteIds.filter(
+        (emailId) => emailId !== id
+      );
+      setFilterInLocalStorage("favourite", state.markedFavouriteIds);
+    },
   },
 
   extraReducers: (builder) => {
@@ -87,6 +101,8 @@ export const {
   filterByUnread,
   filterByFavorites,
   selectEmailBody,
+  addToFavourite,
+  removeFromFavourite,
 } = emailSlice.actions;
 
 export default emailSlice.reducer;
