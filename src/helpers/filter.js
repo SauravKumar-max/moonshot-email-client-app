@@ -1,3 +1,5 @@
+export const filtersList = ["Unread", "Read", "Favorites"];
+
 export const setFilterInLocalStorage = (type, list) => {
   localStorage.setItem(type, JSON.stringify(list));
 };

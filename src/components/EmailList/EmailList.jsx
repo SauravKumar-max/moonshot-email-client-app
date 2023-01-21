@@ -27,13 +27,19 @@ export function EmailList() {
         </div>
       ) : (
         <div className={emailBody ? "list-body-container" : ""}>
-          <ul className={emailBody ? "list-body" : "list"}>
-            {filteredList.map((item) => (
-              <li key={item.id} onClick={() => openEmailBody(item)}>
-                <EmailItem item={item} />
-              </li>
-            ))}
-          </ul>
+          {filteredList.length === 0 ? (
+            <div className={emailBody ? "empty-list-body" : "empty-list"}>
+              <p>No Record Found!</p>
+            </div>
+          ) : (
+            <ul className={emailBody ? "list-body" : "list"}>
+              {filteredList.map((item) => (
+                <li key={item.id} onClick={() => openEmailBody(item)}>
+                  <EmailItem item={item} />
+                </li>
+              ))}
+            </ul>
+          )}
           {emailBody && (
             <div className="email-body">
               <EmailBody />

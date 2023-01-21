@@ -28,6 +28,7 @@ const emailSlice = createSlice({
   reducers: {
     filterByRead: (state) => {
       const { emailList, readIds } = state;
+      state.filterBy = "Read";
       state.filteredList = emailList.filter((item) =>
         readIds.includes(item.id)
       );
@@ -35,6 +36,7 @@ const emailSlice = createSlice({
 
     filterByUnread: (state) => {
       const { emailList, readIds } = state;
+      state.filterBy = "Unread";
       state.filteredList = emailList.filter(
         (item) => !readIds.includes(item.id)
       );
@@ -42,6 +44,7 @@ const emailSlice = createSlice({
 
     filterByFavorites: (state) => {
       const { emailList, markedFavouriteIds } = state;
+      state.filterBy = "Favorites";
       state.filteredList = emailList.filter((item) =>
         markedFavouriteIds.includes(item.id)
       );
@@ -68,6 +71,11 @@ const emailSlice = createSlice({
         (emailId) => emailId !== id
       );
       setFilterInLocalStorage("favourite", state.markedFavouriteIds);
+      if (state.filterBy === "Favorites") {
+        state.filteredList = state.emailList.filter((item) =>
+          state.markedFavouriteIds.includes(item.id)
+        );
+      }
     },
   },
 
@@ -77,7 +85,6 @@ const emailSlice = createSlice({
         state.status = "LOADING";
         state.errorMessage = null;
         state.emailList = [];
-        state.totalRecords = 0;
       })
       .addCase(getEmails.fulfilled, (state, action) => {
         const { list, total } = action.payload;
@@ -86,6 +93,8 @@ const emailSlice = createSlice({
         state.emailList = list;
         state.filteredList = list;
         state.totalRecords = total;
+        state.filterBy = "";
+        state.emailBody = null;
       })
       .addCase(getEmails.rejected, (state, action) => {
         state.status = "FAILED";

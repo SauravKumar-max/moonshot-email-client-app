@@ -9,16 +9,7 @@ import {
   removeFromFavourite,
 } from "../../features/emails/emailSlice";
 import "./EmailBody.css";
-
-function convertToPlain(html) {
-  if (html) {
-    return html
-      .replace(/<[^>]+>/g, "/")
-      .split("//")
-      .filter((text) => text !== "");
-  }
-  return [];
-}
+import { convertToPlain } from "../../helpers/emailBody";
 
 export function EmailBody() {
   const [body, setBody] = useState(null);
@@ -51,8 +42,6 @@ export function EmailBody() {
     dispatch(removeFromFavourite(id));
   }
 
-  console.log({ isMarkedFavorite });
-
   return (
     <div className="body-container">
       <div className="avatar">{avatar}</div>
@@ -79,10 +68,9 @@ export function EmailBody() {
           </div>
         ) : (
           <div className="content">
-            {convertToPlain(body) &&
-              convertToPlain(body)?.map((text, index) => (
-                <p key={index + "body"}>{text}</p>
-              ))}
+            {convertToPlain(body)?.map((text, index) => (
+              <p key={index + "body"}>{text}</p>
+            ))}
           </div>
         )}
       </div>

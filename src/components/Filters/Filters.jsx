@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Filters.css";
 import {
   filterByRead,
   filterByUnread,
   filterByFavorites,
 } from "../../features/emails/emailSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { filtersList } from "../../helpers/filter";
 
 export function Filters() {
-  const filtersList = ["Unread", "Read", "Favorites"];
-  const [activeFilter, setActiveFilter] = useState("");
+  const { filterBy } = useSelector((state) => state.emails);
   const dispatch = useDispatch();
 
   function onFilterClick(type) {
-    setActiveFilter(type);
     type === "Unread" && dispatch(filterByUnread());
     type === "Read" && dispatch(filterByRead());
     type === "Favorites" && dispatch(filterByFavorites());
@@ -27,7 +26,7 @@ export function Filters() {
           <button
             key={item}
             type="button"
-            className={activeFilter === item ? "active" : ""}
+            className={filterBy === item ? "active" : ""}
             onClick={() => onFilterClick(item)}
           >
             {item}

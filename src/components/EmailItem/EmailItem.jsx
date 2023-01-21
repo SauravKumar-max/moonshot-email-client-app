@@ -5,16 +5,26 @@ import { formatDate } from "../../helpers/formatDate";
 import "./EmailItem.css";
 
 export function EmailItem({ item }) {
-  const { readIds, markedFavouriteIds } = useSelector((state) => state.emails);
+  const { readIds, markedFavouriteIds, emailBody } = useSelector(
+    (state) => state.emails
+  );
   const { id, subject, short_description, from, date } = item;
   const { name, email } = from;
   const alreadyRead = readIds.includes(id);
   const avatar = nameInitial(name);
   const formatedDate = formatDate(date);
   const isMarkedFavorite = markedFavouriteIds.includes(id);
+
+  function classNames(...className) {
+    return className.filter(Boolean).join(" ");
+  }
   return (
     <div
-      className={alreadyRead ? "item-container read" : "item-container unread"}
+      className={classNames(
+        alreadyRead && "item-container read",
+        !alreadyRead && "item-container unread",
+        emailBody?.id === id && "current-email"
+      )}
     >
       <div className={"avatar"}>{avatar}</div>
       <div className={"details"}>
@@ -30,7 +40,9 @@ export function EmailItem({ item }) {
           <span className={"subject-title"}>{subject}</span>
         </div>
         <div className={"short-description"}>
-          <p>{short_description}</p>
+          <p className={emailBody ? "truncated-description" : ""}>
+            {short_description}
+          </p>
         </div>
         <div className={"other-details"}>
           <span>{formatedDate}</span>
