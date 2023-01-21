@@ -1,0 +1,31 @@
+.pagination{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0 1rem 0;
+}
+
+.pagination p{
+    margin-right: 1rem;
+}
+
+.pagination button{
+    outline: none;
+    font-size: 0.8rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    margin-right: 0.5rem;
+    font-weight: bold
+}
+
+.current-page{
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.page-number:hover{
+    background: var(--filter-background-color);;
+}

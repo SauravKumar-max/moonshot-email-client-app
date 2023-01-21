@@ -16,3 +16,10 @@ body{
   width: 92%;
   margin: auto;
 }
+
+.filter-and-pagination{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem
+}

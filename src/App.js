@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getEmails } from "./features/emails/emailSlice";
-import { EmailList, Filters } from "./components";
+import { EmailList, Filters, Pagination } from "./components";
 import "./App.css";
 
 function App() {
@@ -13,7 +13,10 @@ function App() {
 
   return (
     <div className="App">
-      <Filters />
+      <div className="filter-and-pagination">
+        <Filters />
+        <Pagination />
+      </div>
       <EmailList />
     </div>
   );
